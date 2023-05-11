@@ -1,0 +1,42 @@
+{
+  "name": "@z-xuanyu/utils",
+  "version": "0.0.5",
+  "description": "xuanyu工具类",
+  "main": "dist/utils.cjs.js",
+  "module": "dist/utils.umd.js",
+  "browser": "dist/utils.umd.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=dev npm run clear && rollup -c -w --bundleConfigAsCjs",
+    "build": "cross-env NODE_ENV=prod npm run clear && rollup -c --bundleConfigAsCjs",
+    "clear": "rimraf dist",
+    "publish": "npm publish --access public"
+  },
+  "keywords": [
+    "工具类"
+  ],
+  "author": {
+    "name": "xuanyu",
+    "email": "969718197@qq.com",
+    "url": "https://www.zhouxuanyu.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/plugin-transform-runtime": "^7.21.4",
+    "@babel/preset-env": "^7.21.5",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-terser": "^0.4.1",
+    "@rollup/plugin-typescript": "^11.1.0",
+    "commander": "^10.0.1",
+    "cross-env": "^7.0.3",
+    "rimraf": "^5.0.0",
+    "rollup": "^3.21.6",
+    "rollup-plugin-filesize": "^10.0.0",
+    "shelljs": "^0.8.5",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4"
+  }
+}
