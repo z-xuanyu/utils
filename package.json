@@ -1,7 +1,10 @@
 {
   "name": "@z-xuanyu/utils",
   "version": "0.0.5",
-  "description": "xuanyu工具类",
+  "description": "前端工具类函数",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/utils.cjs.js",
   "module": "dist/utils.umd.js",
   "browser": "dist/utils.umd.js",
@@ -13,7 +16,8 @@
     "publish": "npm publish --access public"
   },
   "keywords": [
-    "工具类"
+    "utils",
+    "前端工具类函数"
   ],
   "author": {
     "name": "xuanyu",
@@ -21,6 +25,14 @@
     "url": "https://www.zhouxuanyu.com"
   },
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/z-xuanyu/utils.git"
+  },
+  "homepage": "https://github.com/z-xuanyu/utils.git",
+  "bugs": {
+    "url": "https://github.com/z-xuanyu/utils/issues",
+    "email": "969718197@qq.com"
+  },
   "devDependencies": {
     "@babel/core": "^7.21.8",
     "@babel/plugin-transform-runtime": "^7.21.4",
