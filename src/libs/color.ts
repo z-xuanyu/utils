@@ -26,8 +26,8 @@ export function rgbToHex(r: number, g: number, b: number) {
 }
 
 /**
- * Transform a HEX color to its RGB representation
- * @param {string} hex The color to transform
+ * 将HEX颜色转换为RGB
+ * @param {string} hex 要变换的颜色
  * @returns The RGB representation of the passed color
  */
 export function hexToRGB(hex: string) {
