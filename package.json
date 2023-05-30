@@ -1,6 +1,6 @@
 {
   "name": "@z-xuanyu/utils",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "前端工具类函数",
   "publishConfig": {
     "access": "public"
@@ -42,12 +42,15 @@
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-terser": "^0.4.1",
     "@rollup/plugin-typescript": "^11.1.0",
+    "@types/node": "^20.2.5",
+    "@types/spark-md5": "^3.0.2",
     "commander": "^10.0.1",
     "cross-env": "^7.0.3",
     "rimraf": "^5.0.0",
     "rollup": "^3.21.6",
     "rollup-plugin-filesize": "^10.0.0",
     "shelljs": "^0.8.5",
+    "spark-md5": "^3.0.2",
     "tslib": "^2.5.0",
     "typescript": "^5.0.4"
   }

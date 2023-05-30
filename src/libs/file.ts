@@ -1,4 +1,5 @@
 import {openWindow} from "./common";
+import SparkMD5 from "spark-md5";
 
 declare type Nullable<T> = T | null;
 declare type TargetContext = "_self" | "_blank";
@@ -156,4 +157,71 @@ export function downloadByUrl({
 
   openWindow(url, {target});
   return true;
+}
+
+interface HASHFileType {
+  buffer: Buffer;
+
+  HASH: string;
+
+  suffix: string;
+
+  filename: string;
+}
+
+/**
+ *
+ * @param file
+ * @returns
+ * 根据内容生成hash名字
+ */
+export function generateHashFileBuffer(file: File): Promise<HASHFileType> {
+  return new Promise((resolve) => {
+    let fileReader = new FileReader();
+    fileReader.readAsArrayBuffer(file);
+    fileReader.onload = (e: any) => {
+      let buffer = e.target.result;
+      const spark = new SparkMD5.ArrayBuffer();
+      spark.append(buffer);
+      const HASH = spark.end();
+      let suffix: any = /\.([0-9a-zA-Z]+)$/;
+      suffix = suffix.exec(file.name)[1];
+      resolve({
+        buffer,
+        HASH,
+        suffix,
+        filename: `${HASH}.${suffix}`,
+      });
+    };
+  });
+}
+
+/**
+ *
+ * @param file 切片的文件
+ * @param size 每个切片的大小，默认 2M
+ * @returns
+ * 大文件分片
+ */
+export async function splitFileChunks(_file: File, size = 2) {
+  let chunkList = [];
+  // let alreadyChunkList = [];
+  let maxSize = 1024 * 1024 * size;
+  let maxCount = Math.ceil(_file.size / maxSize); // 最大允许分割的切片数量为30
+  let index = 0;
+  const {HASH, suffix} = await generateHashFileBuffer(_file);
+  // // 判断当前文件可以切出多少切片
+  // if (maxCount > 10) {
+  //   // 如果切片数量大于最大值
+  //   maxSize = _file.size / 10; // 则改变切片大小
+  //   maxCount = 10;
+  // }
+  while (index < maxCount) {
+    chunkList.push({
+      file: _file.slice(index * maxSize, (index + 1) * maxSize),
+      filename: `${HASH}_${index + 1}.${suffix}`,
+    });
+    index++;
+  }
+  return chunkList;
 }

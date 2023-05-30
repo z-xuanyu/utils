@@ -8,6 +8,7 @@
     "noUnusedLocals": true,
     "strict": true,
     "emitDeclarationOnly": true,
+    "allowSyntheticDefaultImports": true,
     "outDir": "./dist",
     "declaration": true,
     "declarationDir": "types",
