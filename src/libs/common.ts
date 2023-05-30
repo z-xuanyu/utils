@@ -42,7 +42,7 @@ export function debounce(
   func: Function,
   delay: number
 ): (...args: any[]) => void {
-  let timeoutId: number;
+  let timeoutId: number | NodeJS.Timeout;
 
   return (...args: any[]) => {
     clearTimeout(timeoutId);
@@ -63,7 +63,7 @@ export function throttle(
   func: Function,
   delay: number
 ): (...args: any[]) => void {
-  let timeoutId: number | null;
+  let timeoutId: number | null | NodeJS.Timeout;
   let lastExecTime: number;
 
   return (...args: any[]) => {
